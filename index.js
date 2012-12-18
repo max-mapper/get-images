@@ -1,5 +1,7 @@
 var request = require('request')
 var $ = require('cheerio')
+var path = require('path')
+var nodeURL = require('url')
 
 module.exports = function(url, cb ) {
   request(url, function(err, resp, body) {
@@ -26,7 +28,9 @@ function makeLinksAbsolute(links, baseURL) {
     if (link.match(/^http\:\/\//)) {
       return link
     } else {
-      return baseURL + link
+      var urlObj = nodeURL.parse(baseURL)
+      urlObj.pathname = path.join(urlObj.pathname, link)
+      return nodeURL.format(urlObj)
     }
   })
 }
