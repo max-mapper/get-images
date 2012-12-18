@@ -1,0 +1,9 @@
+{
+  "name": "get-images",
+  "description": "scrape a page and get an array of all the <a> links to pngs or jpegs",
+  "version": "0.0.1",
+  "dependencies": {
+    "request": "2.12.0",
+    "cheerio": "0.10.5"
+  }
+}
