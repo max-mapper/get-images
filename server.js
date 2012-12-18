@@ -5,9 +5,13 @@ var url = require('url')
 http.createServer(handler).listen(80)
 
 function handler(req, res) {
+  var instructions = {
+    usage: "?url=http://somewebpage.com",
+    sourceCode: "https://github.com/maxogden/get-images"
+  }
   var query = url.parse(req.url, true).query
   if (query.url) return generateImagePage(query.url, res)
-  else return res.end(JSON.stringify({error: "usage: ?url=http://somewebpage.com"}))
+  else return res.end(JSON.stringify(instructions))
 }
 
 function generateImagePage(pageURL, res) {
