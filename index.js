@@ -18,7 +18,7 @@ function getImageLinks(body) {
   html('a').map(function(i, link) {
     link = $(link)
     var href = link.attr('href')
-    if (href.match(/(png|jpe?g)$/i)) imageLinks.push(href)
+    if (href.match(/(png|jpe?g|svg)$/i)) imageLinks.push(href)
   })
   return imageLinks
 }
